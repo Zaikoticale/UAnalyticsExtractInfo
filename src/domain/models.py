@@ -1,5 +1,5 @@
 class AnalyticsReport:
-    def __init__(self, group, type, name, view_id, start_date, end_date, metrics, dimensions):
+     def __init__(self, group, type, name, view_id, start_date, end_date, pageSize, metrics, dimensions, orderBys=None):
         self.group = group
         self.type = type
         self.name = name
@@ -8,3 +8,5 @@ class AnalyticsReport:
         self.end_date = end_date
         self.metrics = metrics
         self.dimensions = dimensions
+        self.pageSize = pageSize
+        self.orderBys = orderBys if orderBys is not None else []
