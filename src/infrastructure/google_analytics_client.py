@@ -16,10 +16,19 @@ class GoogleAnalyticsClient:
                         'viewId': report.view_id,
                         'dateRanges': [{'startDate': report.start_date, 'endDate': report.end_date}],
                         'metrics': report.metrics,
-                        'dimensions': report.dimensions
+                        'dimensions': report.dimensions,
+                        'pageSize': report.pageSize,
+                        'orderBys': report.orderBys
                     }
                 ]
             }
         ).execute()
 
-        return pd.json_normalize(response['reports'][0]['data']['rows'])
+        try:
+            return pd.json_normalize(response['reports'][0]['data']['rows'])
+        except KeyError as e:
+            print(f"KeyError: {e}. 'rows' not found in the API response.")
+            # Puedes decidir cómo manejar esta situación, ya sea lanzando una excepción,
+            # retornando un valor predeterminado, o tomando alguna otra acción.
+            # Aquí, por ejemplo, podrías retornar un DataFrame vacío.
+        return pd.DataFrame()
