@@ -13,8 +13,6 @@ pip install google-auth-oauthlib
 pip install google-auth-httplib2
 Configuración
 Clona el repositorio de Git en tu máquina:
-
-git clone https://github.com/tu-usuario/tu-proyecto.git
 Coloca tus credenciales de Google Analytics en un archivo JSON y especifica la ruta en credentials_path en el archivo main.py.
 python
 
